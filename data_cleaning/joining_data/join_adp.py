@@ -20,7 +20,7 @@ def normalize_player(raw):
     # Ignore NaNs.
     if pd.isna(raw):                    
         return raw
-    # Handle odd unicode charaters: ẞ -> SS, é -> e, …
+    # Handle odd unicode charaters: ẞ -> SS, é -> e, etc.
     s = unormalize('NFKD', raw) 
     # Remove dots from initials.        
     s = RX_INITIAL.sub(r'\1', s)
