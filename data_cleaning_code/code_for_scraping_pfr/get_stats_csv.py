@@ -96,6 +96,7 @@ def get_stats_csv(year, stats_type, output_dir):
     except Exception as e:
         print(f'An unexpected error occurred for year {year}: {e}')
 
+
 if __name__ == "__main__":
     start_year = 1932
     end_year = 2024

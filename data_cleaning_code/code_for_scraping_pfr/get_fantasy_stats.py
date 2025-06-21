@@ -15,6 +15,7 @@ def get_fantasy_stats(year):
     output_dir = '../fantasy_stats'
     get_stats_csv(year, stats_type, output_dir)
 
+
 if __name__ == "__main__":
     start_year = 1970
     end_year = 2024
