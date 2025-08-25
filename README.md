@@ -30,5 +30,6 @@ Older Season Data - I scraped a lot of data from older seasons (pre-1987) that I
 Additional Hyperparameter Tuning - I ran GridSearchCV using both my models, but only scratched the surface with tuning the hyperparameters, particularly with XGBoost. 
 I'd like to experiment with other hyperparameter values using RandomizedSearchCV to see if it results in any further improvements.
 
-
+## License
+No license file is currently present. Treat this as all rights reserved unless a license is added. If you plan to fork/distribute, please open an issue to discuss.
 
