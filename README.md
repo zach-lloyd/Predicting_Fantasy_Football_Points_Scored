@@ -14,6 +14,43 @@ I was also interested in how each model's performance varied across positions. M
 
 But the R^2 results are interesting. QBs decisively outperform the other positions on this metric. For most fantasy football players, this will not be surprising. QBs are generally perceived to be the least volatile position. The models seem to back this up. On the other hand, RBs are generally considered the most volatile, due in large part to the outsized effects that age, personnel changes, and injuries can have on their performance. The models back this up, as both show RBs having the lowest R^2 score, although the difference between RBs and WRs and TEs is perhaps not as pronounced as one might expect.
 
+## Process
+I chose Random Forest and XGBoost models because of their reputation for delivering strong predictive performance and diminished risk of overfitting. Additionally, some of the features in this dataset are sparse, and these models are known for handling sparse data well.
+
+For my dataset, I used data on players from 1987 onward. I chose this cutoff date because 1987 is the earliest year for which scouting combine data is available. I used a time series split to avoid the data leakage that could result from using future data to predict past events.
+
+For hyperparameter tuning, I used grid searches with the following parameters:
+
+```
+# Random Forest Model
+
+param_grid = {
+        'n_estimators':      [400, 800, 1200],
+        # Although I used squared_error for training my initial model above, given that I'm testing
+        # different parameters I want to test both criteria here as well.
+        'criterion':         ['squared_error', 'absolute_error'],
+        'max_depth':         [None, 8, 12, 16, 20],
+        'min_samples_leaf':  [1, 2, 4, 8],
+        'max_features':      [1.0, 'sqrt', 'log2'],
+        'min_samples_split': [2, 4, 8, 12]
+}
+
+------------------------------------------------------
+
+# XGBoost Model
+
+param_grid = {
+        'n_estimators':      [400, 800, 1200],   
+        'learning_rate':     [0.1, 0.05, 0.02], 
+        'max_depth':         [4, 6, 8],         
+        'subsample':         [0.7, 0.9, 1.0],   
+        'colsample_bytree':  [0.7, 0.9, 1.0],   
+        'gamma':             [0, 1, 5],         
+        'min_child_weight':  [1, 5, 10],        
+        'reg_lambda':        [0.0, 1.0, 5.0],   
+}
+```
+
 ## Repo Tour
 data_cleaning - scripts that scrape and clean data from Pro Football Reference, Fantasy Pros, and nflcombineresults.com.
 
