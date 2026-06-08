@@ -1,5 +1,5 @@
 # Predicting NFL PPR Fantasy Points with Random Forest & XGBoost
-Random Forest and XGBoost machine learning models for predicting season-long PPR points scored by QBs, RBs, WRs, and TEs.
+Random Forest and XGBoost machine learning models that predict season-long PPR points scored by QBs, RBs, WRs, and TEs and beat Average Draft Position ("ADP") across the board.
 
 ## Repo Tour
 data_cleaning - scripts that scrape and clean data from Pro Football Reference, Fantasy Pros, and nflcombineresults.com.
