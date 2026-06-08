@@ -4,7 +4,7 @@ Random Forest and XGBoost machine learning models that predict season-long PPR p
 ## Introduction
 Average draft position represents the market consensus of how highly a football player is being drafted across thousands of fantasy football leagues. My goal with this project was to determine whether I could build a machine learning model that combines a player's ADP with their statistics from the previous season and their athletic measurements from the NFL Scouting Combine to outperform ADP alone as a predictor of the total number of fantasy football points (using PPR scoring) that a player will score. In short, the question is: can ADP + previous season statistics + NFL Scouting Combine data beat ADP alone as a measure of fantasy football performance?
 
-## Brief Summary of Results
+## Results
 ![test_mae_results](https://github.com/user-attachments/assets/a50e9fe8-9b4e-4d8e-984b-a853cd9ac70a)
 ![r2_results](https://github.com/user-attachments/assets/e3ce5230-b866-4bb8-bd26-dcb48d633a8c)
 
