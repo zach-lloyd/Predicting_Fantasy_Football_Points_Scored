@@ -55,21 +55,19 @@ As mentioned above, I chose 1987 as the cutoff year. However, unfortunately my A
 
 Additionally, the heat maps in the Exploratory Data Analysis and Model notebook show high levels of multicollinearity among a number of previous season statistics. In particular, Previous Season Fantast Points is highly correlated with most of the previous season statistical categories. I did give some consideration to paring down some of the statistical categories that are particularly highly correlated with one another. However, because I was planning to use Random Forest and XGBoost models and they are generally robust to multicollinearity, I ultimately decided not to remove any features. This multicollinearity does, however, limit the interpretability of my feature importances, as I discuss in my model notebook.
 
-## Repo Tour
-data_cleaning - scripts that scrape and clean data from Pro Football Reference, Fantasy Pros, and nflcombineresults.com.
+## Repository Structure
 
-exploratory_data_analysis - code to explore and refine the data.
+This project is organized using a typical data collection, analysis, and modeling pipeline: data collection, data cleaning, exploratory analysis, model training, and model evaluation.
 
-jupyter_notebooks - Jupyter Notebooks that walk through my project step-by-step in more detail and include visualizations of the results.
-
-models - Random Forest and XGBoost models and code for plotting and comparing model results against each other and against ADP as a baseline predictor.
-
-## General Description of Features Used
-Previous Season Statistics (e.g. passing yards, rushing yards, touchdowns, etc.)
-
-Average Draft Position (current season and previous season)
-
-NFL Scouting Combine Measurements (including adjusted Pro Day measurements)
+```
+Predicting_Fantasy_Football_Points_Scored/
+├── data_cleaning/                # Scraping, cleaning, combining, and joining source datasets
+├── exploratory_data_analysis/    # EDA scripts and feature-inspection utilities
+├── jupyter_notebooks/            # Step-by-step project notebooks
+├── models/                       # Model training, evaluation, and result plotting
+├── README.md
+└── .gitignore
+```
 
 ## Areas for Future Improvement
 Additional Features - I would like to add features like offensive line rank and draft capital to see if the models improve further.
