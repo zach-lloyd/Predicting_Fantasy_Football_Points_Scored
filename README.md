@@ -5,8 +5,8 @@ Random Forest and XGBoost machine learning models that predict season-long PPR p
 Average draft position represents the market consensus of how highly a football player is being drafted across thousands of fantasy football leagues. My goal with this project was to determine whether I could build a machine learning model that combines a player's ADP with their statistics from the previous season and their athletic measurements from the NFL Scouting Combine to outperform ADP alone as a predictor of the total number of fantasy football points (using PPR scoring) that a player will score. In short, the question is: can ADP + previous season statistics + NFL Scouting Combine data beat ADP alone as a measure of fantasy football performance?
 
 ## Results
-![test_mae_results](https://github.com/user-attachments/assets/a50e9fe8-9b4e-4d8e-984b-a853cd9ac70a)
-![r2_results](https://github.com/user-attachments/assets/e3ce5230-b866-4bb8-bd26-dcb48d633a8c)
+![test_mae_results](assets/mae_results.png)
+![r2_results](assets/r2_results.png)
 
 Both models outperformed ADP as a baseline predictor with respect to both Test MAE and Test R^2 Score. Compared to each other, the models performed similarly. However, XGBoost produced better test MAE across all positions while Random Forest produced higher R^2 scores across all positions. It's not immediately clear to me why this would be the case, so that's something I may investigate further in the future.
 
@@ -53,7 +53,7 @@ param_grid = {
 ## Limitations
 As mentioned above, I chose 1987 as the cutoff year. However, unfortunately my ADP data only goes back to 2012. That means that ADP data was blank for over half of the data points I used. Given that Random Forest and XGBoost handle sparsity well, that's not necessarily a significant issue. However, given more time, I'd like to experiment with how model performance changes based on how this issue is handled (e.g., does model performance improve or decline if ADP is imputed where actual data is unavailable, if it is dropped altogether, etc.).
 
-Additionally, the heat maps in the Exploratory Data Analysis and Model notebook show high levels of multicollinearity among a number of previous season statistics. In particular, Previous Season Fantast Points is highly correlated with most of the previous season statistical categories. I did give some consideration to paring down some of the statistical categories that are particularly highly correlated with one another. However, because I was planning to use Random Forest and XGBoost models and they are generally robust to multicollinearity, I ultimately decided not to remove any features. This multicollinearity does, however, limit the interpretability of my feature importances, as I discuss in my model notebook.
+Additionally, the heat maps in the Exploratory Data Analysis and Model notebook show high levels of multicollinearity among a number of previous season statistics. In particular, Previous Season Fantasy Points is highly correlated with most of the previous season statistical categories. I did give some consideration to paring down some of the statistical categories that are particularly highly correlated with one another. However, because I was planning to use Random Forest and XGBoost models and they are generally robust to multicollinearity, I ultimately decided not to remove any features. This multicollinearity does, however, limit the interpretability of my feature importances, as I discuss in my model notebook.
 
 ## Repository Structure
 
@@ -65,6 +65,7 @@ Predicting_Fantasy_Football_Points_Scored/
 ├── exploratory_data_analysis/    # EDA scripts and feature-inspection utilities
 ├── jupyter_notebooks/            # Step-by-step project notebooks
 ├── models/                       # Model training, evaluation, and result plotting
+├── assets/                       # Images of MAE and R^2 results for use in README
 ├── README.md
 └── .gitignore
 ```
