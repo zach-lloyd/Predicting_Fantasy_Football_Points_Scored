@@ -17,7 +17,7 @@ But the R^2 results are interesting. QBs decisively outperform the other positio
 ## Process
 I chose Random Forest and XGBoost models because of their reputation for delivering strong predictive performance and diminished risk of overfitting. Additionally, some of the features in this dataset are sparse, and these models are known for handling sparse data well.
 
-For my dataset, I used data on players from 1987 onward. I chose this cutoff date because 1987 is the earliest year for which scouting combine data is available. I used a time series split to avoid the data leakage that could result from using future data to predict past events.
+For my dataset, I used data on players from 1987 onward. I chose this cutoff date because 1987 is the earliest year for which NFL Scouting Combine data is available. I used a time series split to avoid the data leakage that could result from using future data to predict past events.
 
 For hyperparameter tuning, I used grid searches with the following parameters:
 
@@ -50,6 +50,10 @@ param_grid = {
         'reg_lambda':        [0.0, 1.0, 5.0],   
 }
 ```
+## Limitations
+As mentioned above, I chose 1987 as the cutoff year. However, unfortunately my ADP data only goes back to 2012. That means that ADP data was blank for over half of the data points I used. Given that Random Forest and XGBoost handle sparsity well, that's not necessarily a significant issue. However, given more time, I'd like to experiment with how model performance changes based on how this issue is handled (e.g., does model performance improve or decline if ADP is imputed where actual data is unavailable, if it is dropped altogether, etc.).
+
+Additionally, the heat maps in the Exploratory Data Analysis and Model notebook show high levels of multicollinearity among a number of previous season statistics. In particular, Previous Season Fantast Points is highly correlated with most of the previous season statistical categories. I did give some consideration to paring down some of the statistical categories that are particularly highly correlated with one another. However, because I was planning to use Random Forest and XGBoost models and they are generally robust to multicollinearity, I ultimately decided not to remove any features. This multicollinearity does, however, limit the interpretability of my feature importances, as I discuss in my model notebook.
 
 ## Repo Tour
 data_cleaning - scripts that scrape and clean data from Pro Football Reference, Fantasy Pros, and nflcombineresults.com.
